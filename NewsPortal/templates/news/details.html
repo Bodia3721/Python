@@ -1,0 +1,30 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="col-md-12 mt-5 mb-3">
+    <h3 style="color: navy">Детальний огляд новини</h3>
+</div>
+
+<div class="col-sm-4">
+    <img src="{{ url_for('static', filename='/uploads/' + context.single_article.image ) }}" alt="" class="large_img">
+</div>
+
+<div class="col-sm-8">
+    <h3 style="color: navy">{{ context.single_article.title }}
+        <br><span style="font-size: 0.7em">{{ context.single_article.category.name }}</span>
+    </h3>
+    <p>{{ context.single_article.content }}</p>
+    <p>{{ context.single_article.author.name }} - {{ context.single_article.author.email }} / {{ context.single_article.publish }}</p>
+    <p>
+        <a href="/news">Повернутись до новин</a>
+    </p>
+</div>
+
+<style>
+    .large_img{
+        width: 100%;
+    }
+
+</style>
+
+{% endblock content %}

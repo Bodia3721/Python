@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Regular Post</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap4/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/font-awesome-4.7.0/css/font-awesome.min.css') }}" >
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/OwlCarousel2-2.2.1/owl.carousel.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/OwlCarousel2-2.2.1/owl.theme.default.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/OwlCarousel2-2.2.1/animate.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='plugins/jquery.mb.YTPlayer-3.1.12/jquery.mb.YTPlayer.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/regular.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/regular_responsive.css') }}">
+</head>
+<body>
+	<div class="super_container">
+		{% include 'fragments/header.html' %}
+		{% include 'fragments/header.html' %}
+		{% include 'fragments/home.html' %}
+		<div class="page_content">
+			<div class="container">
+				<div class="row">
+					{% block content %}{% endblock content %}
+				</div>
+			</div>
+		</div>
+		{% include 'fragments/footer.html' %}
+	</div>
+
+	<!--scripts-->
+	<script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='styles/bootstrap4/popper.js') }}"></script>
+	<script src="{{ url_for('static', filename='styles/bootstrap4/bootstrap.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='plugins/OwlCarousel2-2.2.1/owl.carousel.js') }}"></script>
+	<script src="{{ url_for('static', filename='plugins/easing/easing.js') }}"></script>
+	<script src="{{ url_for('static', filename='plugins/masonry/masonry.js') }}"></script>
+	<script src="{{ url_for('static', filename='plugins/parallax-js-master/parallax.min.js') }}"></script>
+	<script src="{{ url_for('static', filename='js/regular.js') }}"></script>
+</body>
+</html>

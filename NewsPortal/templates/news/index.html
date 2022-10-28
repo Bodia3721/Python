@@ -1,0 +1,107 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="col-md-12 mt-5 mb-3">
+    <h3 style="color: navy">Контент сторінки новин</h3>
+
+</div>
+<div class="col-sm-2">
+    <section>
+        <h4>Категорії:</h4>
+        <ul>
+            {% for category in context.all_categories %}
+                <li>
+                    <a href="/c_filter/{{ category.id }}">{{ category.name }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+    <section>
+        <h4 style="margin-top: 10px">Автори:</h4>
+        <ul>
+            {% for author in context.all_authors %}
+                <li>
+                    <a href="/a_filter/{{ author.id }}">{{ author.name}}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+</div>
+
+<div class="col-sm-10">
+    <div class="row">
+        <div class="col-md-12">
+            {% with messages = get_flashed_messages() %}
+                 {% if messages %}
+                       {% for message in messages %}
+                            <div class="alert alert-success" role="alert" style="width: 30%">
+                                {{ message }}
+                            </div>
+                       {% endfor %}
+                 {% endif %}
+            {% endwith %}
+        </div>
+        <div class="col-md-6">
+            <h3 style="color: navy">Останні новини</h3>
+        </div>
+        <div class="col-md-6 text-right">
+            <a href="/create" class="btn btn-sm btn-primary mb-2">Додати новину</a>
+        </div>
+    </div>
+
+    {% for article in context.all_articles %}
+        <section class="article">
+            <header>
+                {{ article.title }} /
+                {{ article.category.name }}
+            </header>
+            <main>
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src="{{ url_for('static', filename='/uploads/' + article.image ) }}" alt="" class="article_img">
+                    </div>
+                    <div class="col-md-9">
+                        {{ article.about }}
+                    </div>
+                </div>
+            </main>
+            <footer>
+                {{ article.author.name }} &nbsp;
+                {{ article.publish }}
+                <a href="/news/details/{{ article.id}}">Читати далі...</a>
+            </footer>
+        </section>
+    {% endfor %}
+</div>
+
+<style>
+    .article{
+        border 1px solid silver;
+        border-radius: 5px;
+        padding: 15px;
+        background: whitesmoke;
+        box-shadow: 0 0 20px #33BEFF;
+        margin-bottom: 10px;
+    }
+    .article > header{
+        margin-top: 10px;
+        border-bottom: 1px solid #33BEFF;
+        color: navy;
+        font-size: 1.5em;
+    }
+    .article > footer{
+        border-top: 1px;
+        font-size: 1em;
+    }
+    .article > main{
+        padding: 10px;
+        color: navy;
+    }
+    .article_img{
+        width: 100%;
+    }
+
+
+</style>
+
+{% endblock content %}

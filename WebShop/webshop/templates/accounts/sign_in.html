@@ -1,0 +1,80 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% load static %}
+<div id="breadcrumb" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="breadcrumb-header">{{ title }}</h3>
+                <ul class="breadcrumb-tree">
+                    <li><a href="/">accounts</a></li>
+                    <li class="active">sign_in</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row text-center">
+            <h3 style="color: darkcyan">Авторизація</h3>
+                <form id="form2" class="form-auth" action="/accounts/sign_in" method="post">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="login" class="form-label">Логін:</label>
+                        <input type="text" id="login" name="login" class="form-control"
+                            placeholder="Введіть ваш логін" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pass1" class="form-label">Пароль:</label>
+                        <input type="password" id="pass1" name="pass1" class="form-control"
+                            placeholder="Введіть ваш пароль" required>
+                    </div>
+                    <div class="form-group text-center" style="margin-top: 20px">
+                        <input type="checkbox" id="remember" name="remember" valeu="yes">&nbsp;
+                        <label for="remember" class="form-label">Залишатись у системі</label>
+
+                    </div>
+                    <p>
+                        <input id="submit" type="submit" value="Увійти" class="btn btn-sm btn-success my-btn">
+                    </p>
+                </form>
+
+        </div>
+    </div>
+</div>
+<style>
+    .form-auth{
+        border: 2px solid silver;
+        border-radius: 15px;
+        margin: 20px auto;
+        margin-bottom: 30px;
+        padding: 20px 40px 10px 40px;
+        width: 40%;
+        color: black;
+        font-size: 15px;
+        text-align: left;
+        background: whitesmoke;
+        box-shadow: 0px 10px 40px silver;
+    }
+    .form-auth > h3{
+        color: #004369;
+    }
+    .form-auth > p{
+        text-align: center;
+        margin-top: 10px;
+    }
+    .my-btn{
+        width: 120px;
+    }
+    .form-auth > .form-group{
+        margin-bottom: 10px;
+    }
+    .error{
+        font-style: italic;
+        color: red;
+        font-size: 10px;
+    }
+</style>
+{% endblock content %}

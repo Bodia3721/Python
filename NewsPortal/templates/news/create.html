@@ -1,0 +1,94 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+<div class="col-md-12">
+        <h3 style="margin-top: 15px" class="text-center">Додавання новини</h3>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="title" class="form-label">Заголовок:</label>
+                <input type="text" id="title" name="title" class="form-control my-input"
+                    placeholder="Введіть заголовок новини" required>
+            </div>
+            <div class="form-group">
+                <label for="about" class="form-label">Стислий опис:</label>
+                <textarea id="about" name="about" class="form-control  my-input" rows="5"
+                          placeholder="Введіть стислий опис новини" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="content" class="form-label">Основна стаття:</label>
+                <textarea id="content" name="content" class="form-control  my-input" rows="10"
+                          placeholder="Введіть основний зміст статті" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="image" class="form-label">Зображення:</label>
+                <input type="file" id="image" name="image" class="form-control my-input-2" required>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                         <label for="category" class="form-label">Категорія:</label>
+                         <select id="category" name="category" class="form-control my-input">
+                             {% for category in context.all_categories %}
+                                <option value="{{category.id}}">{{category.name}}</option>
+                            {% endfor %}
+                         </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="author" class="form-label">Автор:</label>
+                        <select id="author" name="author" class="form-control my-input">
+                            {% for author in context.all_authors %}
+                                <option value="{{author.id}}">{{author.name}}</option>
+                            {% endfor %}
+                         </select>
+                    </div>
+                </div>
+            </div>
+            <p>
+                <input type="submit" value="Зберегти" class="btn btn-sm btn-success my-btn">
+            </p>
+        </form>
+</div>
+    <style>
+        form{
+            border: 2px solid silver;
+            border-radius: 15px;
+            margin: 20px auto;
+            margin-bottom: 30px;
+            padding: 20px 40px 20px 40px;
+            width: 65%;
+            border-color: purple;
+            color: purple;
+            font-size: 1.2em;
+            text-align: left;
+            box-shadow: 0px 0px 20px purple;
+        }
+        h3{
+            color: navy;
+        }
+        p{
+            text-align: center;
+            margin-top: 10px;
+        }
+        .my-btn{
+            width: 120px;
+        }
+        .form-group{
+            margin-bottom: 10px;
+        }
+        .my-input{
+            font-size: 1em
+        }
+        .my-input-2{
+            font-size: 1em;
+            width: 50%;
+        }
+        .form-label{
+            color: purple;
+            margin-bottom: 0px;
+            font-style: italic;
+    </style>
+        }
+    </style>
+{% endblock %}

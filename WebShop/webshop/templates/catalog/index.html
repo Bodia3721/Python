@@ -1,0 +1,237 @@
+{% extends 'layouts/base.html' %}
+
+{% block content %}
+{% load static %}
+<div id="breadcrumb" class="section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="breadcrumb-header">{{ title }}</h3>
+                <ul class="breadcrumb-tree">
+                    <li><a href="/">catalog</a></li>
+                    <li class="active">index</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="section">
+    <div class="container">
+        <div class="row text-center">
+            <!-- ASIDE -->
+            <div id="aside" class="col-md-3 text-left">
+
+                <div class="aside">
+                    <h3 class="aside-title">Категорії</h3>
+                    <div class="checkbox-filter">
+                        {% for c in all_categories %}
+                            <div class="input-checkbox">
+                                <input type="checkbox" id="{{ c.name }}" style="margin">
+                                <label for="{{ c.name }}" style="font-size: 11pt; margin-left: 15px">
+                                    <span></span>
+                                    {{ c.name }}
+                                    <small>(0)</small>
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="aside">
+                    <h3 class="aside-title">Ціна</h3>
+                    <div class="price-filter">
+                        <div id="price-slider"></div>
+                        <div class="input-number price-min">
+                            <input id="price-min" type="number">
+                            <span class="qty-up">+</span>
+                            <span class="qty-down">-</span>
+                        </div>
+                        <span>-</span>
+                        <div class="input-number price-max">
+                            <input id="price-max" type="number">
+                            <span class="qty-up">+</span>
+                            <span class="qty-down">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="aside">
+                    <h3 class="aside-title">Виробник</h3>
+                    <div class="checkbox-filter">
+                        {% for p in all_producers %}
+                            <div class="input-checkbox">
+                                <input type="checkbox" id="{{ p.name }}" style="margin">
+                                <label for="{{ p.name }}" style="font-size: 11pt; margin-left: 15px">
+                                    <span></span>
+                                    {{ p.name }}
+                                    <small>(0)</small>
+                                </label>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="aside">
+                    <h3 class="aside-title">Лідери продажів</h3>
+                    <div class="product-widget">
+                        <div class="product-img">
+                            <img src="{% static './img/product01.png' %}" alt="">
+                        </div>
+                        <div class="product-body">
+                            <p class="product-category">Category</p>
+                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                        </div>
+                    </div>
+
+                    <div class="product-widget">
+                        <div class="product-img">
+                            <img src="{% static './img/product02.png' %}" alt="">
+                        </div>
+                        <div class="product-body">
+                            <p class="product-category">Category</p>
+                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                        </div>
+                    </div>
+
+                    <div class="product-widget">
+                        <div class="product-img">
+                            <img src="{% static './img/product03.png' %}" alt="">
+                        </div>
+                        <div class="product-body">
+                            <p class="product-category">Category</p>
+                            <h3 class="product-name"><a href="#">product name goes here</a></h3>
+                            <h4 class="product-price">$980.00 <del class="product-old-price">$990.00</del></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- STORE -->
+            <div id="store" class="col-md-9">
+
+                <div class="store-filter clearfix">
+                    <div class="store-sort">
+                        <label>
+                            Сортувати за:
+                            <select class="input-select">
+                                <option value="0">Популярністю</option>
+                                <option value="1">Зростанням ціни</option>
+                                <option value="2">Зменшенням ціни</option>
+                                <option value="3">Новизною</option>
+                            </select>
+                        </label>
+
+                        <label>
+                            Пагінація:
+                            <select class="input-select">
+                                <option value="0">10</option>
+                                <option value="1">15</option>
+                                <option value="3">20</option>
+                                <option value="4">30</option>
+                            </select>
+                        </label>
+                    </div>
+                    <ul class="store-grid">
+                        <li class="active"><i class="fa fa-th"></i></li>
+                        <li><a href="#"><i class="fa fa-th-list"></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="products row">
+                    <!-- product -->
+                    {% for p in paginate_products %}
+                        <div class="col-md-4 col-xs-6">
+                        <div class="product">
+                            <div class="product-img">
+                                <img src="/media/{{ p.picture }}" alt="">
+<!--                                <div class="product-label">-->
+<!--                                    <span class="sale">-30%</span>-->
+<!--                                    <span class="new">Новий</span>-->
+<!--                                </div>-->
+                            </div>
+                            <div class="product-body">
+                                <input type="hidden" value="{{ p.category.id }}">
+                                <p class="product-category">{{ p.category }}</p>
+                                <h3 class="product-name"><a href="#">{{ p.name }}</a></h3>
+                                <h4 class="product-price">{{ p.price }}0 грн
+<!--                                    <del class="product-old-price"> {{ p.price }}0 грн</del>-->
+                                </h4>
+                                <div class="product-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <div class="product-btns">
+                                    <button class="add-to-wishlist"><i class="fa fa-heart-o"></i><span class="tooltipp">Обране</span></button>
+                                    <button class="add-to-compare"><i class="fa fa-exchange"></i><span class="tooltipp">Порівняння</span></button>
+                                    <button class="quick-view"><i class="fa fa-eye"></i><span class="tooltipp">Перегляд</span></button>
+                                </div>
+                            </div>
+                            <div class="add-to-cart">
+                                <input type="hidden" value="{{ p.id }}">
+                                <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i>До кошику</button>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                <div class="store-filter clearfix">
+<!--                    <span class="store-qty">Відобразити 10 із 100 товарів</span>-->
+<!--                    <ul class="store-pagination">-->
+<!--                        <li class="active">1</li>-->
+<!--                        <li><a href="#">2</a></li>-->
+<!--                        <li><a href="#">3</a></li>-->
+<!--                        <li><a href="#">4</a></li>-->
+<!--                        <li><a href="#"><i class="fa fa-angle-right"></i></a></li>-->
+<!--                    </ul>-->
+                    <div class="wrap-pagination-info">
+                        <div class="pagination my-paginator">
+                            <span class="step-links">
+                                {% if paginate_products.has_previous %}
+                                    <a class="blue" href="?page=1">&laquo;Перша</a>
+                                    <a class="blue" href="?page={{ paginate_products.previous_page_number }}">Попередня</a>
+                                {% endif %}
+
+                                <span class="current">
+                                    Сторінка {{ paginate_products.number }} із {{ paginate_products.paginator.num_pages }}
+                                </span>
+
+                                {% if paginate_products.has_next %}
+                                    <a class="red" href="?page={{ paginate_products.next_page_number }}">Наступна</a>
+                                    <a class="red" href="?page={{ paginate_products.paginator.num_pages }}">Остання&raquo;</a>
+                                {% endif %}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    .my-paginator{
+        border: 1px solid silver;
+        padding: 15px 20px;
+    }
+    .my-paginator a{
+        font-size: 11pt;
+    }
+    .my-paginator .current{
+        font-size: 12pt;
+        font-weight: bold;
+        color: red;
+    }
+    .my-paginator .blue{
+        padding-right: 10px;
+    }
+    .my-paginator .red{
+        padding-left: 10px;
+    }
+</style>
+<script src="{% static 'js/cart.js' %}"></script>
+{% endblock content %}
+
