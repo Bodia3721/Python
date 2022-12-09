@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-s2bl$thu&7e8_@3)-syomrg@c3l(11ffk-y&a@d5-vfopwo=+%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', 'Bodia3721.pythonanywhere.com']
 
 
 # Application definition
@@ -80,7 +80,7 @@ WSGI_APPLICATION = 'csv_gen.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'NAME': str(BASE_DIR / 'db.sqlite3'),
     }
 }
 
