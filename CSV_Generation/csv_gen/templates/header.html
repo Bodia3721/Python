@@ -1,0 +1,21 @@
+{% load static %}
+<header>
+    <div id="top-header">
+        <div class="container">
+            <ul class="header-links pull-left">
+                <li><a href="/app/main"><h4 style="color: white;">FakeCSV</h4></a></li>
+            </ul>
+            <ul class="header-links pull-right">
+                <li>
+                    <a href="#"><i class="fa fa-user-o"></i>
+                        Hello,
+                        {% if user.is_authenticated %}
+                            {{ user.username }}
+                        {% endif %}
+                    </a>
+                    <input type="hidden" id="user_id" value="{{ user.id }}">
+                </li>
+            </ul>
+        </div>
+    </div>
+</header>

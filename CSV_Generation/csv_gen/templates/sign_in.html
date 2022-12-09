@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="section">
+    <div class="container">
+        <div>
+            <form id="form2" class="form-auth" method="post">
+                <h3 style="text-align: center; padding-top: 20px; padding-bottom: 20px;">Login</h3>
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="login" class="form-label"></label>
+                    <input type="text" id="login" name="login" class="log"
+                        placeholder="Login" required>
+                </div>
+                <div class="form-group">
+                    <label for="pass1" class="form-label"></label>
+                    <input type="password" id="pass1" name="pass1" class="pass"
+                        placeholder="Password" required>
+                </div>
+                <div class="inp-log">
+                    <input id="submit" type="submit" value="Login" class="btn btn-primary">
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<style>
+    .form-auth{
+        position: absolute;
+        width: 600px;
+        height: 250px;
+        left: 450px;
+        top: 180px;
+
+        border: 2px solid silver;
+        border-radius: 15px;
+        background: whitesmoke;
+        box-shadow: 0px 10px 40px silver;
+    }
+    .h3{
+
+        font-family: 'Helvetica Neue';
+        font-style: normal;
+        font-weight: 300;
+        font-size: 36px;
+        line-height: 79px;
+
+
+        display: flex;
+        align-items: flex-end;
+
+        color: #373A3C;
+    }
+    .log{
+      position: absolute;
+      left: 200px;
+    }
+    .pass{
+        position: absolute;
+        left: 200px;
+    }
+    .inp-log{
+        text-align: center;
+        margin-top: 10px;
+    }
+</style>
+
+{% endblock content %}

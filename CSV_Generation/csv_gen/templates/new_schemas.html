@@ -1,0 +1,275 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <h4>Create new scheme</h4>
+            </ul>
+        </div>
+    </nav>
+</aside>
+<div id="right-panel" class="right-panel">
+    <div class="content">
+        <div class="animated fadeIn">
+            <div class="row">
+                <div class="col-md-12">
+                    <form class="form-sch" action="/app/ajax_form" method="post">
+                        <div class="form-row">
+                            {% csrf_token %}
+                            <label style="padding:  20px 20px 5px;">Name of schemas</label>
+                            <input type="text" class="form-control" id="name_sch" style="margin-top: 10px; margin-left: -10px;">
+                            <label style="padding: 20px 20px 5px;">Rows</label>
+                            <input type="text" class="form-control" id="rows" style="margin-top: 10px; margin-left: -10px;">
+                            <a href="/app/main"><button class="btn-create">Create Schemas</button></a>
+                        </div>
+                        <div class="form-row">
+                            <table class="table">
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                            <label style="padding: 10px 10px 5px;">Type of data:</label>
+                                            <select id="type_c1" style="margin-top: 10px;">
+                                                <option>Choose..</option>
+                                                <option value="name">Name</option>
+                                                <option value="age">Age</option>
+                                                <option value="email">Email</option>
+                                                <option value="phone">Phone number</option>
+                                                <option value="address">Address</option>
+                                                <option value="date">Date</option>
+                                                <option value="company">Company name</option>
+                                            </select>
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Name of column:</label>
+                                            <input type="text" class="form-control" id="name_c1" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Order of column:</label>
+                                            <input type="number" value=0 class="form-control" id="ord1" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <input type="checkbox" id="checkbox_1" style="margin-top: 15px;">
+                                            <label style="padding: 10px 5px;">Add</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <label style="padding: 10px 10px 5px;">Type of data:</label>
+                                            <select id="type_2" style="margin-top: 10px;">
+                                                <option>Choose..</option>
+                                                <option value="name">Name</option>
+                                                <option value="age">Age</option>
+                                                <option value="email">Email</option>
+                                                <option value="phone">Phone number</option>
+                                                <option value="address">Address</option>
+                                                <option value="date">Date</option>
+                                                <option value="company">Company name</option>
+                                            </select>
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Name of column:</label>
+                                            <input type="text" class="form-control" id="name_c2" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Order of column:</label>
+                                            <input type="number" value=0 class="form-control" id="ord2" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <input type="checkbox" id="checkbox_2" style="margin-top: 15px;">
+                                            <label style="padding: 10px 5px;">Add</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <label style="padding: 10px 10px 5px;">Type of data:</label>
+                                            <select id="type_c3" style="margin-top: 10px;">
+                                                <option>Choose..</option>
+                                                <option value="name">Name</option>
+                                                <option value="age">Age</option>
+                                                <option value="email">Email</option>
+                                                <option value="phone">Phone number</option>
+                                                <option value="address">Address</option>
+                                                <option value="date">Date</option>
+                                                <option value="company">Company name</option>
+                                            </select>
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Name of column:</label>
+                                            <input type="text" class="form-control" id="name_c3" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Order of column:</label>
+                                            <input type="number" value=0 class="form-control" id="ord3" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <input type="checkbox" id="checkbox_3" style="margin-top: 15px;">
+                                            <label style="padding: 10px 5px;">Add</label>
+                                        </th>
+<!--                                        <th>-->
+<!--                                            <label style="padding: 10px 5px;">From:</label>-->
+<!--                                            <input type="number" value=0 class="form-control" id="from" style="margin-top: 5px; margin-left: -3px; width: 70px;">-->
+<!--                                        </th>-->
+<!--                                        <th>-->
+<!--                                            <label style="padding: 10px 5px;">To:</label>-->
+<!--                                            <input type="number" value=0 class="form-control" id="to" style="margin-top: 5px; margin-left: -3px; width: 70px;">-->
+<!--                                        </th>-->
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <label style="padding: 10px 10px 5px;">Type of data:</label>
+                                            <select id="type_c4" style="margin-top: 10px;">
+                                                <option>Choose..</option>
+                                                <option value="name">Name</option>
+                                                <option value="age">Age</option>
+                                                <option value="email">Email</option>
+                                                <option value="phone">Phone number</option>
+                                                <option value="address">Address</option>
+                                                <option value="date">Date</option>
+                                                <option value="company">Company name</option>
+                                            </select>
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Name of column:</label>
+                                            <input type="text" class="form-control" id="name_c4" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Order of column:</label>
+                                            <input type="number" value=0 class="form-control" id="ord4" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <input type="checkbox" id="checkbox_4" style="margin-top: 15px;">
+                                            <label style="padding: 10px 5px;">Add</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <label style="padding: 10px 10px 5px;">Type of data:</label>
+                                            <select id="type_c5" style="margin-top: 10px;">
+                                                <option>Choose..</option>
+                                                <option value="name">Name</option>
+                                                <option value="age">Age</option>
+                                                <option value="email">Email</option>
+                                                <option value="phone">Phone number</option>
+                                                <option value="address">Address</option>
+                                                <option value="date">Date</option>
+                                                <option value="company">Company name</option>
+                                            </select>
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Name of column:</label>
+                                            <input type="text" class="form-control" id="name_c5" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Order of column:</label>
+                                            <input type="number" value=0 class="form-control" id="ord5" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <input type="checkbox" id="checkbox_5" style="margin-top: 15px;">
+                                            <label style="padding: 10px 5px;">Add</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <label style="padding: 10px 10px 5px;">Type of data:</label>
+                                            <select id="type_c6" style="margin-top: 10px;">
+                                                <option>Choose..</option>
+                                                <option value="name">Name</option>
+                                                <option value="age">Age</option>
+                                                <option value="email">Email</option>
+                                                <option value="phone">Phone number</option>
+                                                <option value="address">Address</option>
+                                                <option value="date">Date</option>
+                                                <option value="company">Company name</option>
+                                            </select>
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Name of column:</label>
+                                            <input type="text" class="form-control" id="name_c6" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Order of column:</label>
+                                            <input type="number" value=0 class="form-control" id="ord6" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <input type="checkbox" id="checkbox_6" style="margin-top: 15px;">
+                                            <label style="padding: 10px 5px;">Add</label>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                            <label style="padding: 10px 10px 5px;">Type of data:</label>
+                                            <select id="type_c7" style="margin-top: 10px;">
+                                                <option>Choose..</option>
+                                                <option value="name">Name</option>
+                                                <option value="age">Age</option>
+                                                <option value="email">Email</option>
+                                                <option value="phone">Phone number</option>
+                                                <option value="address">Address</option>
+                                                <option value="date">Date</option>
+                                                <option value="company">Company name</option>
+                                            </select>
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Name of column:</label>
+                                            <input type="text" class="form-control" id="name_c7" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <label style="padding: 10px 5px;">Order of column:</label>
+                                            <input type="number" value=0 class="form-control" id="ord7" style="margin-top: 5px; margin-left: -3px;">
+                                        </th>
+                                        <th>
+                                            <input type="checkbox" id="checkbox_7" style="margin-top: 15px;">
+                                            <label style="padding: 10px 5px;">Add</label>
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div><!-- .animated -->
+    </div><!-- .content -->
+
+    <div class="clearfix"></div>
+</div>
+<style>
+.form-sch{
+    position: absolute;
+    width: 1200px;
+    height: 550px;
+    left: 100px;
+    border: 2px solid silver;
+    border-radius: 15px;
+    background: whitesmoke;
+    box-shadow: 0px 10px 40px silver;
+
+}
+.form-sch label, input{
+    float: left;
+}
+
+.form-control{
+    width: 150px;
+    margin-left: 20px;
+}
+.table{
+    margin-top: 20px;
+}
+.btn-create{
+  background-color: #1E90FF;
+  border: none;
+  border-radius: 15px;
+  width: 200px;
+  height: 40px;
+  color: white;
+
+  margin-left: 200px;
+  margin-top: 10px;
+}
+
+</style>
+<script src="{% static 'js/form.js' %}"></script>
+{% endblock content %}

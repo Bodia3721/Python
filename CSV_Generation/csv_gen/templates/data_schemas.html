@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<aside id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/app/new_schemas"><button class="btn btn-success">New schema</button></a>
+                </li>
+
+                <li>
+                    <a href="/list"><button class="btn btn-light">Schema list</button></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</aside>
+<div id="right-panel" class="right-panel">
+    <div class="content">
+        <div class="animated fadeIn">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <strong class="card-title">Schemas</strong>
+                        </div>
+                        <div class="card-body">
+                            <table id="bootstrap-data-table" class="table table-bordered">
+                                <thead class="thead-dark">
+                                    <tr>
+                                        <th style="width:10%">Name</th>
+                                        <th style="width:20%">Values of columns</th>
+                                        <th style="width:20%">Names of columns</th>
+                                        <th style="width:10%">Order of columns</th>
+                                        <th style="width:10%">Status</th>
+                                        <th style="width:30%">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <th>name</th>
+                                        <th>date, email</th>
+                                        <th>Example</th>
+                                        <th>1,2,3,4</th>
+                                        <th>Done</th>
+                                        <th>
+                                            <a href="/./do/{{ s.id }}/"><button class="btn btn-primary">Generate CSV</button></a>
+                                            <a href="/./edit/{{ s.id }}/"><button  class="btn btn-warning">Edit</button></a>
+                                            <a href="/./delete/{{ s.id }}/"><button class="btn btn-danger">Delete</button></a>
+                                            <a href="{{ s.upload.url }}"><button class="btn btn-success">Download</button></a>
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- .animated -->
+    </div><!-- .content -->
+
+    <div class="clearfix"></div>
+</div>
+<style>
+a:link, a:visited {
+
+  color: black;
+  padding: 1px 1px;
+  text-align: center;
+  text-decoration: none;
+
+}
+
+a:hover, a:active {
+  background-color: none;
+  color: black;
+}
+
+
+</style>
+{% endblock content %}
